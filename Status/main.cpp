@@ -47,6 +47,10 @@ static int userInputNumber(int bClearBuffer = 0) {
 	int offset = 0;
 	if (sscanf_s(p_prev_buffer, "%d%n", &result, &offset) == 1) {
 		p_prev_buffer = p_prev_buffer + offset;
+
+		if (*(p_prev_buffer + offset) == 0) {
+			p_prev_buffer = NULL;
+		}
 				
 		return result;
 	};
